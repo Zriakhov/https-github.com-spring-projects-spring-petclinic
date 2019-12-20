@@ -5,7 +5,7 @@ properties([disableConcurrentBuilds]())
             label 'master'
         }
     options {
-        buildDiscarder(logRotator(numToKeepStr: '10', artifactNunToKeepStr: '10'))
+        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
         timestamps()
     }
     stages {
