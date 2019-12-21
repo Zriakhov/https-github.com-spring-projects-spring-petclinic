@@ -10,7 +10,7 @@ properties([disableConcurrentBuilds()])
             timestamps()
         }
         stages {
-            stage ("Compile aplication"){
+            stage ('Compile aplication') {
                 steps {
              
                     sh 'mvn -B -DskipTests clean package'
@@ -24,7 +24,7 @@ properties([disableConcurrentBuilds()])
                     sh 'mvn test'
                 }
             }
-            stage('')
+//            stage('')
 
 
 //        stage ("creat docker image") {
