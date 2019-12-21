@@ -10,12 +10,12 @@ properties([disableConcurrentBuilds()])
             timestamps()
         }
         stages {
-            stage ('Compile aplication') {
-                steps {
+            stage('Compile aplication') {
+                step1 {
              
                     sh 'mvn -B -DskipTests clean package'
                 }
-                steps {
+                step2 {
                     sh 'mvn -DskipTests compile package'
                 }
             }
