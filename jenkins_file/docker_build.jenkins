@@ -10,9 +10,9 @@ properties([disableConcurrentBuilds()])
             timestamps()
         }
         stages {
-            stage('Preparation') {
-            git (branch: 'master',
-            url: 'https://github.com/Zriakhov/petclinic.git')
+            stage ('Preparation') {
+                git (branch: 'master',
+                url: 'https://github.com/Zriakhov/petclinic.git')
             }
             
 
