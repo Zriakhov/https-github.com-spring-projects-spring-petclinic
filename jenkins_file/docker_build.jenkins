@@ -14,7 +14,7 @@ properties([disableConcurrentBuilds()])
             git branch: 'master'
             url: https://github.com/Zriakhov/petclinic.git
             }
-            }
+            
 
 //        stages {
 //            stage('Compile aplication') {
@@ -22,8 +22,8 @@ properties([disableConcurrentBuilds()])
 //                    sh 'mvn clean install'
 //                    sh 'mvn -B -DskipTests clean package'
 //                    sh 'mvn -DskipTests compile package'
-                }
-            }
+//                }
+//            }
 //            stage('Testing') { 
 //                steps {
 //                    sh 'mvn test'
