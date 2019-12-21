@@ -11,8 +11,8 @@ properties([disableConcurrentBuilds()])
         }
         stages {
             stage('Preparation') {
-            git branch: 'master',
-            url: 'https://github.com/Zriakhov/petclinic.git'
+            git (branch: 'master',
+            url: 'https://github.com/Zriakhov/petclinic.git')
             }
             
 
