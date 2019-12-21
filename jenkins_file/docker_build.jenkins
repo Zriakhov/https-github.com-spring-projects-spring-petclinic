@@ -10,9 +10,16 @@ properties([disableConcurrentBuilds()])
             timestamps()
         }
         stages {
-            stage('Compile aplication') {
-                steps {
-                    sh 'mvn clean install'
+            stage('Preparation') {
+            git branch: 'master'
+            url: https://github.com/Zriakhov/petclinic.git
+            }
+            }
+
+//        stages {
+//            stage('Compile aplication') {
+//                steps {
+//                    sh 'mvn clean install'
 //                    sh 'mvn -B -DskipTests clean package'
 //                    sh 'mvn -DskipTests compile package'
                 }
