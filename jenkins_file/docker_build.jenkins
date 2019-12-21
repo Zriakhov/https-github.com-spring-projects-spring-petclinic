@@ -5,18 +5,35 @@ properties([disableConcurrentBuilds()])
         agent {
             label 'master'
         }
-    options {
-        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
-        timestamps()
-    }
-    stages {
-        stage ("creat docker image") {
-            steps {
-                echo "===============start building image ================"
-                dir ('docker/toolbox') {
-                 //   sh 'docker build . '
+        options {
+            buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+            timestamps()
+        }
+        stages {
+            stage ("Compile aplication"){
+                steps {
+             
+                    sh 'mvn -B -DskipTests clean package'
+                }
+                steps {
+                    sh 'mvn -DskipTests compile package'
                 }
             }
+            stage('Testing') { 
+                steps {
+                    sh 'mvn test'
+                }
+            }
+            stage('')
+
+
+//        stage ("creat docker image") {
+//            steps {
+//                echo "===============start building image ================"
+//                dir ('docker/toolbox') {
+                 //   sh 'docker build . '
+//                }
+//            }
+//        }
         }
-    }
     }
