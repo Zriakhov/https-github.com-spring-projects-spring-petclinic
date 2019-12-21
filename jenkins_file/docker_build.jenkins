@@ -11,11 +11,9 @@ properties([disableConcurrentBuilds()])
         }
         stages {
             stage('Compile aplication') {
-                step1 {
+                steps {
              
                     sh 'mvn -B -DskipTests clean package'
-                }
-                step2 {
                     sh 'mvn -DskipTests compile package'
                 }
             }
