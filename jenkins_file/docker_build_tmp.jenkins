@@ -34,11 +34,11 @@ properties([disableConcurrentBuilds()])
                     sh "./mvnw install -Dmaven.test.skip=true"
                 }
             }
-            stage('Building dicker image') {
-                steps {
-                    echo "-=- Building docker image -=-"
-
-                }
-            }
+ //           stage('Building docker image') {
+ //               steps {
+ //                   echo "-=- Copy jar -=-"
+ //                   sh 'cp ${Workspace}/target/spring-petclinic-2.2.0.BUILD-SNAPSHOT.jar '
+ //               }
+ //           }
         }
     }

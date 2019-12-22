@@ -1,0 +1,30 @@
+version: '2'
+services:
+  jenkins:
+    image: 'jenkins/jenkins:lts'
+    restart: always
+    ports:
+      - 80:8080
+    volumes:
+      - jenkins_data:/var/lib/jenkins
+  registry:
+    restart: always
+    image: registry:2
+    ports:
+      - 5000:5000
+    volumes:
+      - repo:/var/lib/registry
+  kaniko:
+    restart: always
+    image: gcr.io/kaniko-project/executor
+    ports:
+      - 5050:5050
+    volumes:
+      - kaniko:/var/lib/kaniko
+volumes:
+  jenkins_data:
+    driver: local
+  repo:
+    driver: local
+  kaniko:
+    driver: local
