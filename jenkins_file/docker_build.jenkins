@@ -32,7 +32,7 @@ properties([disableConcurrentBuilds()])
             stage('Building project') {
                 steps {
                     echo "-=- Build project -=-"
-                    sh "./mvnw package"
+                    sh "./mvnw install -Dmaven.test.skip=true"
                 }
             }
 
