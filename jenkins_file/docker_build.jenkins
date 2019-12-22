@@ -10,13 +10,32 @@ properties([disableConcurrentBuilds()])
             timestamps()
         }
         stages {
+            stage('Preparation') {
+                steps {
+                    echo "-=- Cleaning project -=-"
+                    sh "./mvnw clean"
+                }
+            }
             stage('Compile') {
                 steps {
                     echo "-=- compiling project -=-"
-                    sh "./mvnw clean package"
-//                    sh "./mvnw clean compile"
+                    sh "./mvnw compile"
                 }
             }
+            stage('Testing') {
+                steps {
+                    echo "-=- Testing -=-"
+                    sh "./mvnw test"
+                }
+            }
+
+            stage('Building project') {
+                steps {
+                    echo "-=- Build project -=-"
+                    sh "./mvnw package"
+                }
+            }
+
  //           stage ('Preparation') {
  //               steps {
  //                   git branch: 'master', url: 'https://github.com/Zriakhov/petclinic.git'
