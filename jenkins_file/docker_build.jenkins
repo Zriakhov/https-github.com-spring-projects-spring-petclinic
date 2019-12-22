@@ -1,6 +1,6 @@
 #!groovy
 properties([disableConcurrentBuilds()])
-    tools {'maven_3_6_3'}
+//    tools {'maven_3_6_3'}
     pipeline {
         agent {
             label 'master'
