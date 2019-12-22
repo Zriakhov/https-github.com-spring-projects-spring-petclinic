@@ -1,6 +1,6 @@
 #!groovy
 properties([disableConcurrentBuilds()])
-    tools {'maven'}
+    tools {'maven_3_6_3'}
     pipeline {
         agent {
             label 'master'
@@ -10,12 +10,18 @@ properties([disableConcurrentBuilds()])
             timestamps()
         }
         stages {
-            stage ('Preparation') {
+            stage('Compile') {
                 steps {
-                    git branch: 'master', url: 'https://github.com/Zriakhov/petclinic.git'
+                    echo "-=- compiling project -=-"
+                    sh "./mvnw clean compile"
                 }
             }
-            
+ //           stage ('Preparation') {
+ //               steps {
+ //                   git branch: 'master', url: 'https://github.com/Zriakhov/petclinic.git'
+ //               }
+ //           }
+
 
 //        stages {
 //            stage('Compile aplication') {
@@ -25,7 +31,7 @@ properties([disableConcurrentBuilds()])
 //                    sh 'mvn -DskipTests compile package'
 //                }
 //            }
-//            stage('Testing') { 
+//            stage('Testing') {
 //                steps {
 //                    sh 'mvn test'
 //                }
