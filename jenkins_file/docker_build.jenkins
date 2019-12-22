@@ -28,44 +28,17 @@ properties([disableConcurrentBuilds()])
                     sh "./mvnw test"
                 }
             }
-
             stage('Building project') {
                 steps {
                     echo "-=- Build project -=-"
                     sh "./mvnw install -Dmaven.test.skip=true"
                 }
             }
+            stage('Building dicker image') {
+                steps {
+                    echo "-=- Building dicker image -=-"
 
- //           stage ('Preparation') {
- //               steps {
- //                   git branch: 'master', url: 'https://github.com/Zriakhov/petclinic.git'
- //               }
- //           }
-
-
-//        stages {
-//            stage('Compile aplication') {
-//                steps {
-//                    sh 'mvn clean install'
-//                    sh 'mvn -B -DskipTests clean package'
-//                    sh 'mvn -DskipTests compile package'
-//                }
-//            }
-//            stage('Testing') {
-//                steps {
-//                    sh 'mvn test'
-//                }
-//            }
-//            stage('')
-
-
-//        stage ("creat docker image") {
-//            steps {
-//                echo "===============start building image ================"
-//                dir ('docker/toolbox') {
-                 //   sh 'docker build . '
-//                }
-//            }
-//        }
+                }
+            }
         }
     }
