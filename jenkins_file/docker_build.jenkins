@@ -13,7 +13,8 @@ properties([disableConcurrentBuilds()])
             stage('Compile') {
                 steps {
                     echo "-=- compiling project -=-"
-                    sh "./mvnw clean compile"
+                    sh 'mvn clean package'
+//                    sh "./mvnw clean compile"
                 }
             }
  //           stage ('Preparation') {
