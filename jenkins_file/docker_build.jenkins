@@ -37,10 +37,11 @@ properties([disableConcurrentBuilds()])
                 }
             }
             stage('Building docker image') {
-                adgan {
-                    steps {
+                steps {
                     echo "-=- Building docker image -=-"
                     }
+                adgan {
+                    
                     docker {
                         image 'gcr.io/kaniko-project/executor:latest'
                         args '--dockerfile=/workspace/jenkins_file/pet_image.dockerfile \
