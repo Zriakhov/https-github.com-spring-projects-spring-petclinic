@@ -39,13 +39,21 @@ properties([disableConcurrentBuilds()])
             stage('Building docker image') {
                 steps {
                     echo "-=- Building docker image -=-"
-                    agent { label 'docker-slave' }
-                    docker run \
-                    -v $(pwd):/workspace \
-                    gcr.io/kaniko-project/executor:latest \
-                    --dockerfile=<path-to-dockerfile> \
-                    --context=/workspace \
-                    --destination=<repo-url-with-image-name>:<tag>
+                    docker {
+                        image 'gcr.io/kaniko-project/executor:latest'
+                        args '--dockerfile=/workspace/jenkins_file/pet_image.dockerfile \
+                        --destination=172.18.0.2:5000'
+                    }    
+
+
+
+//                    agent { label 'docker-slave' }
+//                    docker run \
+//                    -v $(pwd):/workspace \
+//                    gcr.io/kaniko-project/executor:latest \
+//                    --dockerfile=<path-to-dockerfile> \
+//                    --context=/workspace \
+//                    --destination=<repo-url-with-image-name>:<tag>
                 }
             }
         }
