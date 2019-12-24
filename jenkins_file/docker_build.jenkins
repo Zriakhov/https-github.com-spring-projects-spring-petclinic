@@ -33,7 +33,6 @@ properties([disableConcurrentBuilds()])
                 steps {
                     echo "-=- Build project -=-"
                     sh "./mvnw install -Dmaven.test.skip=true"
-                    sh "cp ~/W" 
                 }
             }
             stage('Building docker image') {
