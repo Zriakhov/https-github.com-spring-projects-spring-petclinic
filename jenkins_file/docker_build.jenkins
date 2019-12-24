@@ -1,6 +1,6 @@
 #!groovy
 properties([disableConcurrentBuilds()])
-    agent any
+//    agent any
 //    tools {'maven'}
     pipeline {
         agent {
