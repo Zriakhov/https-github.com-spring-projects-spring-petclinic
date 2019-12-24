@@ -37,10 +37,10 @@ properties([disableConcurrentBuilds()])
                 }
             }
             stage('Building docker image') {
-//                steps {
-//                    echo "-=- Building docker image -=-"
-//                    }
-                adgan {
+                steps {
+                    echo "-=- Building docker image -=-"
+                    }
+                agent {
                     
                     docker {
                         image 'gcr.io/kaniko-project/executor:latest'
