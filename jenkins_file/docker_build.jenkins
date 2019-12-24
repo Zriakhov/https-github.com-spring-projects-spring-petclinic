@@ -43,7 +43,7 @@ properties([disableConcurrentBuilds()])
                     
                     docker {
                         image 'gcr.io/kaniko-project/executor:latest'
-                        args '--dockerfile=/workspace/jenkins_file/pet_image.dockerfile \
+                        args '--dockerfile=/var/jenkins_home/workspace/build-pc/jenkins_file/pet_image.dockerfile \
                         --destination=172.18.0.2:5000'
                     }    
                 }
