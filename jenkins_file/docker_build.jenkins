@@ -1,7 +1,7 @@
 #!groovy
 properties([disableConcurrentBuilds()])
     agent any
-    tools {'maven'}
+//    tools {'maven'}
     pipeline {
         agent {
             label 'master'
@@ -47,16 +47,6 @@ properties([disableConcurrentBuilds()])
                         args '--dockerfile=/workspace/jenkins_file/pet_image.dockerfile \
                         --destination=172.18.0.2:5000'
                     }    
-
-
-
-//                    agent { label 'docker-slave' }
-//                    docker run \
-//                    -v $(pwd):/workspace \
-//                    gcr.io/kaniko-project/executor:latest \
-//                    --dockerfile=<path-to-dockerfile> \
-//                    --context=/workspace \
-//                    --destination=<repo-url-with-image-name>:<tag>
                 }
             }
         }
