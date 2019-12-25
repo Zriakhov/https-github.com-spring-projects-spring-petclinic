@@ -38,8 +38,8 @@ properties([disableConcurrentBuilds()])
             stage('Building docker image') {
                 steps {
                     echo "-=- Building docker image -=-"
-                   // }
-                //agent {
+                }
+                agent {
                   //  docker {
                     //    image 'gcr.io/kaniko-project/executor:latest'
                       //  args '--dockerfile=/var/jenkins_home/workspace/build-pc/jenkins_file/pet_image.dockerfile \
