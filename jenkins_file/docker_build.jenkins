@@ -35,9 +35,9 @@ properties([disableConcurrentBuilds()])
                     sh "./mvnw install -Dmaven.test.skip=true"
                 }
             }
-            //stage('Building docker image') {
-                //steps {
-                    //echo "-=- Building docker image -=-"
+            stage('Building docker image') {
+                steps {
+                    echo "-=- Building docker image -=-"
                    // }
                 //agent {
                   //  docker {
@@ -45,7 +45,7 @@ properties([disableConcurrentBuilds()])
                       //  args '--dockerfile=/var/jenkins_home/workspace/build-pc/jenkins_file/pet_image.dockerfile \
                         //--destination=172.18.0.2:5000'
                   //  }
-               // }
-            //}
+                }
+            }
         }
     }
