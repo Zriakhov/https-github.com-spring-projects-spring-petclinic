@@ -38,7 +38,7 @@ properties([disableConcurrentBuilds()])
             stage('Building docker image') {
                 steps {
                     echo "-=- Building docker image -=-"
-                    sh 'echo pwd'
+                    sh 'pwd'
                 }
                 // agent { dockerfile true
                     //docker {
