@@ -38,8 +38,11 @@ properties([disableConcurrentBuilds()])
             stage('Building docker image') {
                 steps {
                     echo "-=- Building docker image -=-"
-                    //sh Home_Folder='pwd'
                     sh 'scp ./target/spring-petclinic-2.2.0.BUILD-SNAPSHOT.jar vagrant@172.18.0.1:~/tmp'
+                    sh 'scp ./jenkins_file/pet_image.dockerfile vagrant@172.18.0.1:~/tmp'
+                    //sh 'ssh vagrant@172.18.0.1:~/tmp '
+                    
+
                 }
                 // agent { dockerfile true
                     //docker {
