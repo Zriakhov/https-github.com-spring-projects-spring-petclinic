@@ -41,8 +41,7 @@ properties([disableConcurrentBuilds()])
                     echo "-=- Building docker image -=-"
                     script {
                         dir ('/var/jenkins_home/workspace/build-pc/workspace/jenkins_file')
-                        //sh 'cp /var/jenkins_home/workspace/build-pc/workspace/ '
-                        dockerImage = docker.build("localhost:5000/petclinic:${BUILD_NUMBER}:latest")
+                        dockerImage=docker.build('localhost:5000/petclinic:${BUILD_NUMBER}:latest')
                         docker.withRegistry('localhost:5000')
                         dockerImage.push()
                     }
