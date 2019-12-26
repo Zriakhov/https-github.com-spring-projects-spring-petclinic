@@ -39,9 +39,11 @@ properties([disableConcurrentBuilds()])
                 steps {
                     echo "-=- Building docker image -=-"
                     sh 'scp ./target/spring-petclinic-2.2.0.BUILD-SNAPSHOT.jar vagrant@172.18.0.1:~/tmp'
-                    sh 'scp ./jenkins_file/pet_image.dockerfile vagrant@172.18.0.1:~/tmp'
+                    sh 'scp ./jenkins_file/pet_image.dockerfile vagrant@172.18.0.1:~/tmp/Dockerfile'
+                    sh '$BUILD_NUMBER'
+                    sh 'vagrant@172.18.0.1:~/tmp \'docker run -v $(pwd):/usr gcr.io/kaniko-project/executor:latest -f Dockerfile -c /usr  -d 172.18.0.2:5000/petclinic:1\''
                     //sh 'ssh vagrant@172.18.0.1:~/tmp '
-                    
+
 
                 }
                 // agent { dockerfile true
