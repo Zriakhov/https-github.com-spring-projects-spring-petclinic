@@ -1,9 +1,7 @@
 #!groovy
 properties([disableConcurrentBuilds()])
-    agent any
-    tools {
-        maven 'maven'
-        }
+    //agent any
+    //tools { maven 'Maven' }
     pipeline {
         agent {label 'master'}
         options {
