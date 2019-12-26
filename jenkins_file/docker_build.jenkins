@@ -11,30 +11,30 @@ properties([disableConcurrentBuilds()])
             timestamps()
         }
         stages {
-         //   stage('Preparation') {
-         //       steps {
-         //           echo "-=- Cleaning project -=-"
-         //           sh "./mvnw clean"
-         //       }
-         //   }
-         //   stage('Compile') {
-         //       steps {
-         //           echo "-=- compiling project -=-"
-         //           sh "./mvnw compile"
-         //       }
-         //   }
-         //   stage('Testing') {
-         //       steps {
-         //           echo "-=- Testing -=-"
-         //           sh "./mvnw test"
-         //       }
-         //   }
-         //   stage('Building project') {
-         //       steps {
-         //           echo "-=- Build project -=-"
-         //          sh "./mvnw install -Dmaven.test.skip=true"
-         //       }
-         //   }
+            stage('Preparation') {
+                steps {
+                    echo "-=- Cleaning project -=-"
+                    sh "./mvnw clean"
+                }
+            }
+            stage('Compile') {
+                steps {
+                    echo "-=- compiling project -=-"
+                    sh "./mvnw compile"
+                }
+            }
+            stage('Testing') {
+                steps {
+                    echo "-=- Testing -=-"
+                    sh "./mvnw test"
+                }
+            }
+            stage('Building project') {
+                steps {
+                    echo "-=- Build project -=-"
+                   sh "./mvnw install -Dmaven.test.skip=true"
+                }
+            }
             stage('Building docker image') {
                 steps {
                     echo "-=- Building docker image -=-"
