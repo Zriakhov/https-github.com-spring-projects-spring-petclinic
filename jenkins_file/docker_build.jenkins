@@ -39,7 +39,7 @@ properties([disableConcurrentBuilds()])
                 steps {
                     echo "-=- Building docker image -=-"
                     script {
-                        dir ('$(pwd)/jenkins_file')
+                        dir ('/jenkins_file')
                         dockerImage = docker.build("172.18.0.2:5000/petclinic:${BUILD_NUMBER}:latest")
                         docker.withRegistry('172.18.0.2:5000')
                         dockerImage.push
