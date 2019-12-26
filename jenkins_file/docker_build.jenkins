@@ -42,6 +42,7 @@ properties([disableConcurrentBuilds()])
                     script {
                         dir ("/var/jenkins_home/workspace/build-pc/jenkins_file")
                         sh 'pwd'
+                        sh 'ls -al'
                         //sh 'cp /var/jenkins_home/workspace/build-pc/ '
                         //dockerImage=docker.build('localhost:5000/petclinic:${BUILD_NUMBER}:latest')
                         //docker.withRegistry('localhost:5000')
