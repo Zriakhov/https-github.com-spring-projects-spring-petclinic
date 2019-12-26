@@ -1,7 +1,7 @@
 #!groovy
 properties([disableConcurrentBuilds()])
-//    agent any
-//    tools {'maven'}
+    agent any
+    tools {'maven'}
     pipeline {
         agent {
             label 'master'
@@ -11,35 +11,36 @@ properties([disableConcurrentBuilds()])
             timestamps()
         }
         stages {
-            stage('Preparation') {
-                steps {
-                    echo "-=- Cleaning project -=-"
-                    sh "./mvnw clean"
-                }
-            }
-            stage('Compile') {
-                steps {
-                    echo "-=- compiling project -=-"
-                    sh "./mvnw compile"
-                }
-            }
-            stage('Testing') {
-                steps {
-                    echo "-=- Testing -=-"
-                    sh "./mvnw test"
-                }
-            }
-            stage('Building project') {
-                steps {
-                    echo "-=- Build project -=-"
-                    sh "./mvnw install -Dmaven.test.skip=true"
-                }
-            }
+         //   stage('Preparation') {
+         //       steps {
+         //           echo "-=- Cleaning project -=-"
+         //           sh "./mvnw clean"
+         //       }
+         //   }
+         //   stage('Compile') {
+         //       steps {
+         //           echo "-=- compiling project -=-"
+         //           sh "./mvnw compile"
+         //       }
+         //   }
+         //   stage('Testing') {
+         //       steps {
+         //           echo "-=- Testing -=-"
+         //           sh "./mvnw test"
+         //       }
+         //   }
+         //   stage('Building project') {
+         //       steps {
+         //           echo "-=- Build project -=-"
+         //          sh "./mvnw install -Dmaven.test.skip=true"
+         //       }
+         //   }
             stage('Building docker image') {
                 steps {
                     echo "-=- Building docker image -=-"
                     script {
                         dir ('/var/jenkins_home/workspace/build-pc/workspace/jenkins_file')
+                        //sh 'cp /var/jenkins_home/workspace/build-pc/workspace/ '
                         dockerImage = docker.build("localhost:5000/petclinic:${BUILD_NUMBER}:latest")
                         docker.withRegistry('localhost:5000')
                         dockerImage.push()
