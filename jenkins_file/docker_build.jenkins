@@ -40,7 +40,7 @@ properties([disableConcurrentBuilds()])
                 steps {
                     echo "-=- Building docker image -=-"
                     script {
-                        dir ("/var/jenkins_home/workspace/build-pc/jenkins_file") {
+                        dir ("${workspace}/jenkins_file") {
                         sh 'pwd'    
                         sh 'ls -al'
                         }
