@@ -1,4 +1,3 @@
-//#!groovy
 properties([disableConcurrentBuilds()])
     agent any
     tools {
