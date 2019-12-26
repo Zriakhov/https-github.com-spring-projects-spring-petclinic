@@ -3,9 +3,10 @@ properties([disableConcurrentBuilds()])
     //agent any
     //tools { maven 'Maven' }
     pipeline {
-        agent any
-        tools { maven 'Maven' }
+        //agent any
         agent {label 'master'}
+        tools { maven 'Maven' }
+        
         options {
             buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
             timestamps()
