@@ -1,5 +1,5 @@
 FROM openjdk:latest                                                                                                                                                                                                     
-ADD ./target/spring-petclinic-2.2.0.BUILD-SNAPSHOT.jar ~/spring-petclinic-2.2.0.BUILD-SNAPSHOT.jar
+ADD /var/jenkins_home/workspace/build-pc/target/spring-petclinic-2.2.0.BUILD-SNAPSHOT.jar ~/spring-petclinic-2.2.0.BUILD-SNAPSHOT.jar
 
 EXPOSE 8080
 
