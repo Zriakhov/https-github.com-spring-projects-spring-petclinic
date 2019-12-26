@@ -26,7 +26,7 @@ properties([disableConcurrentBuilds()])
             stage('Testing') {
                 steps {
                     echo "-=- Testing -=-"
-                    sh "./mvnw test"Zriakhov
+                    sh "./mvnw test"
                 }
             }
             stage('Building project') {
