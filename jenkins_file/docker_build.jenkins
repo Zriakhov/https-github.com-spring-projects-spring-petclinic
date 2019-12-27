@@ -39,7 +39,7 @@ properties([disableConcurrentBuilds()])
             stage('Building docker image') {
                 steps {
                     echo "-=- Building docker image -=-"
-                    sh 'cp ${workspace/target/spring-petclinic-2.2.0.BUILD-SNAPSHOT.jar ${workspace/jenkins_file/spring-petclinic-2.2.0.BUILD-SNAPSHOT.jar'
+                    sh 'cp ${workspace}/target/spring-petclinic-2.2.0.BUILD-SNAPSHOT.jar ${workspace}/jenkins_file/spring-petclinic-2.2.0.BUILD-SNAPSHOT.jar'
                     script {
                         dir ("${workspace}/jenkins_file") {
                         //sh 'cp /var/jenkins_home/workspace/build-pc/ '
