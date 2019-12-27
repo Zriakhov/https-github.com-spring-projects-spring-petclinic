@@ -1,6 +1,10 @@
 FROM openjdk:latest                                                                                                     
 
+RUN pwd
+
 RUN mkdir ./petclinic && cd ./petclinic
+
+RUN pwd
 
 COPY /spring-petclinic-2.2.0.BUILD-SNAPSHOT.jar /var/jenkins_home/workspace/pet-job/target/spring-petclinic-2.2.0.BUILD-SNAPSHOT.jar
 
