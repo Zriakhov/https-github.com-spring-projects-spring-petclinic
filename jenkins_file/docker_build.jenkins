@@ -6,7 +6,6 @@ properties([disableConcurrentBuilds()])
         //agent any
         agent {label 'master'}
         tools { maven 'maven' }
-        
         options {
             buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
             timestamps()

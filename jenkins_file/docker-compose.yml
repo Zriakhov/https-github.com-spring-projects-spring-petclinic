@@ -3,7 +3,7 @@ services:
   jenkins:
     build:
       context: .
-      dockerfile: Jenkins_docker_file
+      dockerfile: jenkins_docker_file.dockerfile
     image: 'jenkins/jenkins:lts'
     restart: always
     privileged: true
@@ -14,14 +14,14 @@ services:
       - jenkins_data:/home/jenkins
   registry:
     restart: always
-    image: registry:2
+    image: 'registry'
+    container_name: registryv2
     ports:
       - 5000:5000
-      - 443:443
     volumes:
-      - repo:/var/lib/registry  
+      - repo:/var/lib/registry
 volumes:
   jenkins_data:
     driver: local
   repo:
-    driver: local 
+    driver: local

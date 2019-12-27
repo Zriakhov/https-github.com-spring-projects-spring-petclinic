@@ -1,4 +1,4 @@
-FROM openjdk:latest                                                                                                     
+FROM openjdk:latest
 
 #RUN mkdir ./petclinic && cd ./petclinic
 
