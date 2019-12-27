@@ -1,0 +1,27 @@
+version: '3'
+services:
+  jenkins:
+    build:
+      context: .
+      dockerfile: Jenkins_docker_file
+    image: 'jenkins/jenkins:lts'
+    restart: always
+    privileged: true
+    ports:
+      - 80:8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - jenkins_data:/home/jenkins
+  registry:
+    restart: always
+    image: registry:2
+    ports:
+      - 5000:5000
+      - 443:443
+    volumes:
+      - repo:/var/lib/registry  
+volumes:
+  jenkins_data:
+    driver: local
+  repo:
+    driver: local 
