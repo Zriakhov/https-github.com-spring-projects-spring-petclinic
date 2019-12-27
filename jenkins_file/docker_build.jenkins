@@ -44,7 +44,8 @@ properties([disableConcurrentBuilds()])
                         dir ("${workspace}/jenkins_file") {
                         //sh 'cp /var/jenkins_home/workspace/build-pc/ '
                         dockerImage=docker.build("localhost:5000/petclinic:${BUILD_NUMBER}")
-                        docker.withRegistry("localhost:5000")
+                        withDockerRegistry(registry: [url: 'localhost:5000'])
+                        //docker.withRegistry("localhost:5000")
                         dockerImage.push()
                         }
                     }
