@@ -42,7 +42,7 @@ properties([disableConcurrentBuilds()])
                     script {
                         dir ("${workspace}/jenkins_file") {
                         //sh 'cp /var/jenkins_home/workspace/build-pc/ '
-                        dockerImage=docker.build("127.0.0.1:5000/petclinic:${BUILD_NUMBER}")
+                        dockerImage=docker.build("172.19.0.2:5000/petclinic:${BUILD_NUMBER}")
                         //withDockerRegistry(registry: [url: 'localhost:5000'])
                         //    docker.withRegistry("https://127.0.0.1:5000") {
                         //        dockerImage.push()
@@ -54,7 +54,7 @@ properties([disableConcurrentBuilds()])
             stage('Deploy Image') {
                 steps{
                     script {
-                        docker.withRegistry( 'https://127.0.0.1:5000' ) {
+                        docker.withRegistry( 'https://172.19.0.2:5000' ) {
                             dockerImage.push()
                         }
                     }
