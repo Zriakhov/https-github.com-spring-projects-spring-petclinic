@@ -55,7 +55,7 @@ properties([disableConcurrentBuilds()])
                 steps{
                     echo "-=- Deploy image -=-"
                     script {
-                        docker.withRegistry( 'tcp://172.19.0.2:5000' ) {
+                        docker.withRegistry( '172.19.0.2:5000' ) {
                             dockerImage.push()
                         }
                     }
