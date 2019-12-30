@@ -68,7 +68,7 @@ properties([disableConcurrentBuilds()])
                     sh 'whoami'
                     sh 'cd ~'
                     sh 'pwd'
-                    sh 'cd .ssh'
+                    sh 'cd ~/.ssh'
                     sh 'pwd'
                     //sh 'ssh vagrant@192.168.2.113'
                     //sh './VM2_start'
