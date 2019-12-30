@@ -38,11 +38,11 @@ properties([disableConcurrentBuilds()])
             stage('Building docker image') {
                 steps {
                     echo "-=- Building docker image -=-"
-                    sh "cp ${workspace}/target/spring-petclinic-2.2.0.BUILD-SNAPSHOT.jar ${workspace}/jenkins_file/spring-petclinic-2.2.0.BUILD-SNAPSHOT.jar"
+                    sh "cp ${workspace}/target/spring-petclinic-2.2.0.BUILD-SNAPSHOT.jar ${workspace}/jenkins_file/spring-petclinic-2.2.${BUILD_NUMBER}.BUILD-SNAPSHOT.jar"
                     script {
                         dir ("${workspace}/jenkins_file") {
                         //sh 'cp /var/jenkins_home/workspace/build-pc/ '
-                        dockerImage=docker.build("127.0.0.1:5000/petclinic_${BUILD_NUMBER}:latest")
+                        dockerImage=docker.build("127.0.0.1:5000/petclinic:latest")
                         //withDockerRegistry(registry: [url: 'localhost:5000'])
                         //    docker.withRegistry("https://127.0.0.1:5000") {
                         //        dockerImage.push()
