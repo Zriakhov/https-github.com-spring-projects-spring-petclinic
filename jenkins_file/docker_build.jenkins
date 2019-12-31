@@ -65,14 +65,9 @@ properties([disableConcurrentBuilds()])
                 steps{
                     echo "-=- Deploy image -=-"
                     //sh 'ssh vagrant@10.23.27.8 \'./start\''
-                    sh 'whoami'
-                    sh 'cd ~'
-                    sh 'pwd'
-                    sh 'cd ~/.ssh'
-                    sh 'pwd'
-                    //sh 'ssh vagrant@192.168.2.113'
-                    //sh './VM2_start'
-                    //sh 'exit'
+                    sh 'ssh vagrant@192.168.2.113'
+                    sh './VM2_start'
+                    sh 'exit'
                 }
             }
         }
