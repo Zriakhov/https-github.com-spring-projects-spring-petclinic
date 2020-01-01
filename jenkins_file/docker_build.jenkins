@@ -61,9 +61,10 @@ properties([disableConcurrentBuilds()])
                     }
                 }
             }
-            node {
-                agent { label 'slave01' }
+            //node {
+
             stage('Deploy Image') {
+                agent { label 'slave01' }
                 steps{
                     echo "-=- Deploy image -=-"
                     slave01.run
@@ -76,6 +77,6 @@ properties([disableConcurrentBuilds()])
                     //sh 'exit'
                 }
             }
-            }
+            //}
         }
     }
