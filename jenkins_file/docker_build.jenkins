@@ -61,7 +61,7 @@ properties([disableConcurrentBuilds()])
                     }
                 }
             }
-            node(label, slave01) {
+            node(slave01) {
             stage('Deploy Image') {
                 steps{
                     echo "-=- Deploy image -=-"
