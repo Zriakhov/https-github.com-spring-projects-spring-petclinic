@@ -61,13 +61,13 @@ properties([disableConcurrentBuilds()])
                     }
                 }
             }
+            node {
+                agent { label 'slave01' }
             stage('Deploy Image') {
-                agent {
-                    label 'slave01'
-                }
                 steps{
                     echo "-=- Deploy image -=-"
-                    slave01.build
+                    slave01.run
+                    //slave01.build
                     //sh 'ssh vagrant@10.23.27.8 \'./start\''
                     //sh 'cd /home/vagrant'
                     //sh './VM2_start'
@@ -75,6 +75,7 @@ properties([disableConcurrentBuilds()])
                     //sh 'pwd'
                     //sh 'exit'
                 }
+            }
             }
         }
     }
