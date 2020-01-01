@@ -61,7 +61,6 @@ properties([disableConcurrentBuilds()])
                     }
                 }
             }
-            node('slave01') {
             stage('Deploy Image') {
                 steps{
                     echo "-=- Deploy image -=-"
@@ -70,7 +69,6 @@ properties([disableConcurrentBuilds()])
                     //sh 'pwd'
                     //sh 'exit'
                 }
-            }
             }
         }
     }
