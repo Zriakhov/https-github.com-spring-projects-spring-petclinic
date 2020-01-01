@@ -67,10 +67,11 @@ properties([disableConcurrentBuilds()])
                 }
                 steps{
                     echo "-=- Deploy image -=-"
+                    slave01.build
                     //sh 'ssh vagrant@10.23.27.8 \'./start\''
-                    sh 'cd /home/vagrant'
-                    sh './VM2_start'
-                    sh 'pwd'
+                    //sh 'cd /home/vagrant'
+                    //sh './VM2_start'
+                    //sh 'pwd'
                     //sh 'pwd'
                     //sh 'exit'
                 }
