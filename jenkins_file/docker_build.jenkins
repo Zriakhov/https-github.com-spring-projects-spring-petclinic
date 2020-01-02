@@ -13,6 +13,7 @@ properties([disableConcurrentBuilds()])
         stages {
             stage('Preparation') {
                 steps {
+
                     echo "-=- Cleaning project -=-"
                     sh "./mvnw clean"
                 }
@@ -41,12 +42,7 @@ properties([disableConcurrentBuilds()])
                     sh "cp ${workspace}/target/spring-petclinic-2.2.0.BUILD-SNAPSHOT.jar ${workspace}/jenkins_file/spring-petclinic-2.2.0.BUILD-SNAPSHOT.jar"
                     script {
                         dir ("${workspace}/jenkins_file") {
-                        //sh 'cp /var/jenkins_home/workspace/build-pc/ '
                         dockerImage=docker.build("127.0.0.1:5000/petclinic:latest")
-                        //withDockerRegistry(registry: [url: 'localhost:5000'])
-                        //    docker.withRegistry("https://127.0.0.1:5000") {
-                        //        dockerImage.push()
-                        //    }
                         }
                     }
                 }
@@ -61,8 +57,6 @@ properties([disableConcurrentBuilds()])
                     }
                 }
             }
-            //node {
-            
             stage('Deploy Image') {
                 agent { label 'slave01' }
                 options { skipDefaultCheckout() }
@@ -70,18 +64,6 @@ properties([disableConcurrentBuilds()])
                    echo "-=- Build project -=-"
                    sh '/home/vagrant/start'
                 }
-                //steps{
-                    //echo "-=- Deploy image -=-"
-                    //slave01.run
-                    //slave01.build
-                    //sh 'ssh vagrant@10.23.27.8 \'./start\''
-                    //sh 'cd /home/vagrant'
-                    //sh './VM2_start'
-                    //sh 'pwd'
-                    //sh 'pwd'
-                    //sh 'exit'
-                //}
             }
-            //}
         }
     }
