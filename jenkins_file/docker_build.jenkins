@@ -65,6 +65,7 @@ properties([disableConcurrentBuilds()])
             
             stage('Deploy Image') {
                 agent { label 'slave01' }
+                options { skipDefaultCheckout() }
                 steps {
                    echo "-=- Build project -=-"
                    sh '/home/vagrant/start'
