@@ -68,7 +68,7 @@ properties([disableConcurrentBuilds()])
                 steps {
                    echo "-=- Build project -=-"
                    sh 'a=$(docker ps | grep petclinic | cut -d\' \' -f 1)'
-                   sh 'echo $a'
+                   sh 'echo $(a)'
                    //sh 'if [ $a = '' ]; then \'sudo docker stop ${a}\''    
                    
                    sh 'sudo docker stop $(a)'
