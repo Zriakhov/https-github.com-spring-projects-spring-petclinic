@@ -68,9 +68,9 @@ properties([disableConcurrentBuilds()])
                 steps {
                    echo "-=- Build project -=-"
                    sh 'a=$(docker ps | grep petclinic | cut -d\' \' -f 1)'
-                   if ($a != '') {
-                       sh 'sudo docker stop ${a}'    
-                   }
+                   sh 'echo $a'
+                   //sh 'if [ $a = '' ]; then \'sudo docker stop ${a}\''    
+                   
                    //sh 'sudo docker stop $(docker ps | grep petclinic | cut -d\' \' -f 1)'
                    sh 'sudo docker run -p 8080:8080 -d 10.23.27.6:5000/petclinic:latest'
                    //sh '/home/vagrant/start'
