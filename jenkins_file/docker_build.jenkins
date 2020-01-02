@@ -62,9 +62,13 @@ properties([disableConcurrentBuilds()])
                 }
             }
             //node {
-
-            //stage('Deploy Image') {
-                //agent { label 'slave01' }
+            
+            stage('Deploy Image') {
+                agent { label 'slave01' }
+                steps {
+                   echo "-=- Build project -=-"
+                   sh '/home/vagrant/start'
+                }
                 //steps{
                     //echo "-=- Deploy image -=-"
                     //slave01.run
@@ -76,7 +80,7 @@ properties([disableConcurrentBuilds()])
                     //sh 'pwd'
                     //sh 'exit'
                 //}
-            //}
+            }
             //}
         }
     }
