@@ -14,28 +14,25 @@ properties([disableConcurrentBuilds()])
             stage('Preparation') {
                 steps {
                     echo "-=- Cleaning project -=-"
-                    script {
-                        maven.clean
+                    withMaven() {
+                        sh "./mvnw clean"
                     }
-                    //sh "./mvnw clean"
                 }
             }
             stage('Compile') {
                 steps {
                     echo "-=- compiling project -=-"
-                    script {
-                        maven.compile
+                    withMaven() {
+                        sh "./mvnw compile"
                     }
-                    //sh "./mvnw compile"
                 }
             }
             stage('Testing') {
                 steps {
                     echo "-=- Testing -=-"
-                    script {
-                        maven.test
+                    withMaven() {
+                        sh "./mvnw test"
                     }
-                    //sh "./mvnw test"
                 }
             }
             stage('Building project') {
