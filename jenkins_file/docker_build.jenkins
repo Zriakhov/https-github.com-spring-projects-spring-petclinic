@@ -53,8 +53,8 @@ properties([disableConcurrentBuilds()])
                             sh  'echo "FROM openjdk:latest" > ./Dockerfile'
                             sh  'echo "COPY spring-petclinic-2.2.0.${BUILD_NUMBER}.jar /petclinic/spring-petclinic-2.2.0.${BUILD_NUMBER}.jar" >> ./Dockerfile'
                             sh  'echo "EXPOSE 8080" >> ./Dockerfile'
-                            sh  'echo "CMD [\"java\",\"-jar\",\"/petclinic/spring-petclinic-2.2.0.${BUILD_NUMBER}.jar\"]" >> ./Dockerfile'
-                            sh  'echo "#CMD [\"java\",\"-jar\",\"/petclinic/spring-petclinic-2.2.0.${BUILD_NUMBER}.jar\"]" >> ./Dockerfile'
+                            sh  'echo "CMD ["\""java"\"","\""-jar"\"","\""/petclinic/spring-petclinic-2.2.0.${BUILD_NUMBER}.jar"\""]" >> ./Dockerfile'
+                            //sh  'echo "#CMD [\"java\",\"-jar\",\"/petclinic/spring-petclinic-2.2.0.${BUILD_NUMBER}.jar\"]" >> ./Dockerfile'
 
                         dockerImage=docker.build("127.0.0.1:5000/petclinic:latest")
 
