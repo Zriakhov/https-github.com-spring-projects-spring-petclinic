@@ -63,9 +63,9 @@ properties([disableConcurrentBuilds()])
                 agent { label 'slave1' }
                 options { skipDefaultCheckout() }
                 steps {
-                    HOME= "${HOME}/petclinic"
+                    //HOME= "${HOME}/petclinic"
                     echo "-=- Deploy Image -=-"
-                    sh '${HOME}/VM2_start.sh'
+                    sh '${PWD}/VM2_start.sh'
                 }
             }
         }
