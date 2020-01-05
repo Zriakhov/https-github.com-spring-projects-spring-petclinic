@@ -42,13 +42,8 @@ properties([disableConcurrentBuilds()])
                 steps {
                     echo "-=- Building docker image -=-"
                     sh "cp ${workspace}/target/spring-petclinic-2.2.0.BUILD-SNAPSHOT.jar ${workspace}/jenkins_file/spring-petclinic-2.2.0.${BUILD_NUMBER}.jar"
-                    //sh 'echo "FROM openjdk:latest" > ${workspace}/jenkins_file/Dockerfile'
-                    //sh 'echo "COPY spring-petclinic-2.2.0.${BUILD_NUMBER}.jar /petclinic/spring-petclinic-2.2.0.${BUILD_NUMBER}.jar" >> ${workspace}/jenkins_file/Dockerfile'
-                    //sh 'echo "EXPOSE 8080" >> ${workspace}/jenkins_file/Dockerfile'
-                    //sh 'echo "CMD ["java","-jar","/petclinic/spring-petclinic-2.2.0.${BUILD_NUMBER}.jar"]" >> ${workspace}/jenkins_file/Dockerfile'
                     script {
                         dir ("${workspace}/jenkins_file") {
-                            //sh 'rm ./Dockerfile'
                             sh '''
                             touch Dockerfile
                             echo "FROM openjdk:latest" > ./Dockerfile
@@ -56,9 +51,7 @@ properties([disableConcurrentBuilds()])
                             echo "EXPOSE 8080" >> ./Dockerfile
                             echo "CMD [\\\"java\\\",\\\"-jar\\\",\\\"/petclinic/spring-petclinic-2.2.0.${BUILD_NUMBER}.jar\\\"]" >> ./Dockerfile
                             '''
-
                         dockerImage=docker.build("127.0.0.1:5000/petclinic:latest")
-
                         }
                     }
                 }
