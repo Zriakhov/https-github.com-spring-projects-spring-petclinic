@@ -63,15 +63,15 @@ properties([disableConcurrentBuilds()])
                 }
             }
             stage('Deploy Image') {
-                agent { label 'slave1' }
                 options { skipDefaultCheckout() }
                 steps {
                    echo "-=- Deploy Image -=-"
-                   /home/vagrant/VM2_start
+                   //home/vagrant/VM2_start
                    //sh 'sudo docker stop $(docker ps | grep petclinic | cut -d\' \' -f 1)'
                    //sh 'sudo docker run -p 8080:8080 -d 10.23.27.6:5000/petclinic:latest'
                    //sh '/home/vagrant/start'
                 }
+                agent { label 'slave1' }
             }
         }
     }
