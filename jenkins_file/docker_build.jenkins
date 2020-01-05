@@ -67,10 +67,9 @@ properties([disableConcurrentBuilds()])
                 options { skipDefaultCheckout() }
                 steps {
                    echo "-=- Deploy Image -=-"
-                   sh 'cp /var/jenkins_home/workspace/pet-job/jenkins_file/VM2_start.sh /home/vagrant/workspace/pet-job/VM2_start.sh'
+                   sh '/var/jenkins_home/workspace/pet-job/jenkins_file/VM2_start.sh'
                    sh ' cd ~/ '
                    sh 'ls -al'
-                   sh ' ./VM2_start.sh '
                    //sh 'sudo docker stop $(docker ps | grep petclinic | cut -d\' \' -f 1)'
                    //sh 'sudo docker run -p 8080:8080 -d 10.23.27.6:5000/petclinic:latest'
                    //sh '/home/vagrant/start'
