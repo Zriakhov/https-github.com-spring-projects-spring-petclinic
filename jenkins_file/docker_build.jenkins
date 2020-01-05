@@ -65,7 +65,7 @@ properties([disableConcurrentBuilds()])
                 steps {
                     echo "-=- Deploy Image -=-"
                     dir ("${HOME}/petclinic") {
-                        './VM2_start.sh'
+                        sh './VM2_start.sh'
                     }
                 }
             }
