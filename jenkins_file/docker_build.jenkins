@@ -11,7 +11,7 @@ properties([disableConcurrentBuilds()])
             timestamps()
         }
         stages {
-            /*stage('Preparation') {
+            stage('Preparation') {
                 steps {
                     echo "-=- Cleaning project -=-"
                     //withMaven() {
@@ -61,7 +61,7 @@ properties([disableConcurrentBuilds()])
                         }
                     }
                 }
-            }*/
+            }
             stage('Deploy Image') {
                 agent { label 'slave1' }
                 options { skipDefaultCheckout() }
