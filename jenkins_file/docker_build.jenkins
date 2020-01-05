@@ -45,7 +45,6 @@ properties([disableConcurrentBuilds()])
                     script {
                         dir ("${workspace}/jenkins_file") {
                         dockerImage=docker.build("127.0.0.1:5000/petclinic:latest")
-                        dockerDelImage=docker.rmi("127.0.0.1:5000/petclinic")
                         }
                     }
                 }
@@ -55,7 +54,6 @@ properties([disableConcurrentBuilds()])
                     echo "-=- Sending image in registry -=-"
                     script {
                         docker.withRegistry( 'https://127.0.0.1:5000' ){
-                            dockerDelImage.rmi()
                             dockerImage.push()
                         }
                     }
