@@ -53,6 +53,7 @@ properties([disableConcurrentBuilds()])
                 steps{
                     echo "-=- Sending image in registry -=-"
                     script {
+                        docker.rmi("127.0.0.1:5000/petclinic:latest")
                         docker.withRegistry( 'https://127.0.0.1:5000' ){
                             dockerImage.push()
                         }
