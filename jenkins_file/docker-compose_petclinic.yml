@@ -1,0 +1,14 @@
+version: '3'
+services:
+  petclinic:
+    build:
+      context: .
+    image: '192.168.2.112:5000/petclinic:latest'
+    restart: always
+    ports:
+      - 8080:8080
+    volumes:
+      - petclinic_data:/home/vagrant/pet
+volumes:
+  petclinic_data:
+    driver: local
