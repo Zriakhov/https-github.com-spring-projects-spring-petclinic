@@ -3,6 +3,7 @@ properties([disableConcurrentBuilds()])
     pipeline {
         agent {label 'master'}
         tools { maven 'maven' }
+        def registry="127.0.0.1:5000"
         options {
             buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
             timestamps()
@@ -44,7 +45,7 @@ properties([disableConcurrentBuilds()])
                     sh "cp ${workspace}/target/spring-petclinic-2.2.0.BUILD-SNAPSHOT.jar ${workspace}/jenkins_file/spring-petclinic-2.2.0.BUILD-SNAPSHOT.jar"
                     script {
                         dir ("${workspace}/jenkins_file") {
-                        dockerImage=docker.build("127.0.0.1:5000/petclinic:latest")
+                        dockerImage=docker.build("${registry}/petclinic.${BUILD_NUMBER}:latest")
                         }
                     }
                 }
@@ -53,7 +54,7 @@ properties([disableConcurrentBuilds()])
                 steps{
                     echo "-=- Sending image in registry -=-"
                     script {
-                        docker.withRegistry( 'https://127.0.0.1:5000' ){
+                        docker.withRegistry( "https://${registry}" ){
                             dockerImage.push()
                         }
                     }
