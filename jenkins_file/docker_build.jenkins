@@ -52,7 +52,8 @@ properties([disableConcurrentBuilds()])
                             echo "CMD [\\\"java\\\",\\\"-jar\\\",\\\"/petclinic/spring-petclinic-2.2.0.${BUILD_NUMBER}.jar\\\"]" >> ./Dockerfile
                             '''
                         dockerImage=docker.build("localhost:5000/petclinic:${BUILD_NUMBER}")
-                        sh 'docker rmi "localhost:5000/petclinic:${${BUILD_NUMBER}-1}"
+                        del=${BUILD_NUMBER}-1
+                        sh 'docker rmi "localhost:5000/petclinic:${del}"
                         }
                     }
                 }
