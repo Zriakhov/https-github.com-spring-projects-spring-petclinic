@@ -6,7 +6,7 @@ services:
     image: '192.168.2.112:5000/petclinic:latest'
     restart: always
     ports:
-      - 8080:8080
+      - 5555:8080
     volumes:
       - petclinic_data:/home/vagrant/pet
 volumes:

@@ -39,7 +39,7 @@ Vagrant.configure("2") do |config|
     vm_c7_0.vm.provider :virtualbox do |vb|
       vb.customize ["modifyvm", "vm_c7_0", "--groups", "/CI_CD"]
       vb.name = "vm_c7_0"
-      vb.memory = "1024"
+      vb.memory = "4096"
     end
 #    s_c7_0.vm.provider "virtualbox" do |vb|
 #        vb.name = "s_c7_0"
