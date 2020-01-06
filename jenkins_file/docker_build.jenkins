@@ -52,7 +52,7 @@ properties([disableConcurrentBuilds()])
                             echo "CMD [\\\"java\\\",\\\"-jar\\\",\\\"/petclinic/spring-petclinic-2.2.0.${BUILD_NUMBER}.jar\\\"]" >> ./Dockerfile
                             '''
                         //docker.prune("localhost:5000/petclinic")
-                        dockerImage=docker.build("localhost:5000/petclinic:latest")
+                        dockerImage=docker.build("localhost:5000/petclinic:${BUILD_NUMBER}")
                         }
                     }
                 }
@@ -63,6 +63,7 @@ properties([disableConcurrentBuilds()])
                     script {
                         docker.withRegistry( "https://localhost:5000" ){
                             dockerImage.push()
+                            dockerImage.push 'latest'
                         }
                     }
                 }
