@@ -53,7 +53,7 @@ properties([disableConcurrentBuilds()])
                             '''
                         dockerImage=docker.build("localhost:5000/petclinic:${BUILD_NUMBER}")
                         del=${BUILD_NUMBER}-1
-                        sh 'docker rmi "localhost:5000/petclinic:${del}"
+                        sh 'docker rmi "localhost:5000/petclinic:${del}"'
                         }
                     }
                 }
