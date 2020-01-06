@@ -51,9 +51,9 @@ properties([disableConcurrentBuilds()])
                             echo "EXPOSE 8080" >> ./Dockerfile
                             echo "CMD [\\\"java\\\",\\\"-jar\\\",\\\"/petclinic/spring-petclinic-2.2.0.${BUILD_NUMBER}.jar\\\"]" >> ./Dockerfile
                             '''
+                        sh 'docker rmi "localhost:5000/petclinic"'
                         dockerImage=docker.build("localhost:5000/petclinic:${BUILD_NUMBER}")
-                        del=${BUILD_NUMBER}-1
-                        sh 'docker rmi "localhost:5000/petclinic:${del}"'
+                        //del=${BUILD_NUMBER}-1
                         }
                     }
                 }
