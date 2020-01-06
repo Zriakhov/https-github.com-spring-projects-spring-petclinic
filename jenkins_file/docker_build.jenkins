@@ -51,7 +51,7 @@ properties([disableConcurrentBuilds()])
                             echo "EXPOSE 8080" >> ./Dockerfile
                             echo "CMD [\\\"java\\\",\\\"-jar\\\",\\\"/petclinic/spring-petclinic-2.2.0.${BUILD_NUMBER}.jar\\\"]" >> ./Dockerfile
                             '''
-                        dockerImage=docker.build("127.0.0.1:5000/petclinic:latest")
+                        dockerImage=docker.build("localhost:5000/petclinic:latest")
                         }
                     }
                 }
@@ -60,7 +60,7 @@ properties([disableConcurrentBuilds()])
                 steps{
                     echo "-=- Sending image in registry -=-"
                     script {
-                        docker.withRegistry( "https://127.0.0.1:5000" ){
+                        docker.withRegistry( "https://localhost:5000" ){
                             dockerImage.push()
                         }
                     }
