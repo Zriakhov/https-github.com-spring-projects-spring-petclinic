@@ -76,7 +76,7 @@ properties([disableConcurrentBuilds()])
                     dir ("${HOME}/petclinic") {
                         sh './VM2_start.sh'
                     }
-                    mail bcc: '', body: 'The deployment of "Pet Clinic" project completed successfully, http://10.23.27.8:5555/', cc: '', from: '', replyTo: '', subject: 'Jenkins: from "pet-job"', to: 'Mykhailo_Zriakhov@epam.com'
+                    mail bcc: '', body: 'The deployment of "Pet Clinic" project completed successfully with new build, http://10.23.27.8:5555/', cc: '', from: '', replyTo: '', subject: 'Jenkins: from "pet-job"', to: 'Mykhailo_Zriakhov@epam.com'
                 }
             }
         }
