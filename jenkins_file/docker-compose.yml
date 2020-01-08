@@ -23,7 +23,7 @@ services:
       - REGISTRY_AUTH=htpasswd
       - REGISTRY_AUTH_HTPASSWD_REALM="Registry Realm"
       - REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd
-      - REGISTRY_HTTP_ADDR=0.0.0.0:443
+      - REGISTRY_HTTP_ADDR=10.23.27.6:443
       - REGISTRY_HTTP_TLS_CERTIFICATE=/certs/docker-registry.crt
       - REGISTRY_HTTP_TLS_KEY=/certs/docker-registry.key 
     volumes:
