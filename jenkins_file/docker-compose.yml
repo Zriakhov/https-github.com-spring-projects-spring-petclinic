@@ -17,8 +17,8 @@ services:
     image: 'registry'
     container_name: registry_v2
     ports:
-      #- 5000:5000
-      - 443:443
+      - 5000:5000
+      #- 443:443
     environment:
       - REGISTRY_AUTH=htpasswd
       - REGISTRY_AUTH_HTPASSWD_REALM="Registry Realm"
@@ -30,7 +30,7 @@ services:
       - /opt/docker/containers/docker-registry/certs:/certs
       - /opt/docker/containers/docker-registry/registry:/var/lib/registry
       - /opt/docker/containers/docker-registry/auth:/auth
-      #      - repo:/var/lib/registry
+      - repo:/var/lib/registry
 volumes:
   jenkins_data:
     driver: local
