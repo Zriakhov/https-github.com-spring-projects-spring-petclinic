@@ -14,16 +14,16 @@ services:
       - jenkins_data:/home/jenkins
   registry:
     restart: always
-    image: 'registry'
-    container_name: registry_v2
+    image: 'registry:2'
+    container_name: registry
     ports:
-      - 5000:5000
-      #- 443:443
+      #- 5000:5000
+      - 443:443
     environment:
       - REGISTRY_AUTH=htpasswd
       - REGISTRY_AUTH_HTPASSWD_REALM="Registry Realm"
       - REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd
-      - REGISTRY_HTTP_ADDR=10.23.27.6:443
+      - REGISTRY_HTTP_ADDR=0.0.0.0:443
       - REGISTRY_HTTP_TLS_CERTIFICATE=/certs/docker-registry.crt
       - REGISTRY_HTTP_TLS_KEY=/certs/docker-registry.key 
     volumes:
@@ -31,8 +31,8 @@ services:
       - /opt/docker/containers/docker-registry/registry:/var/lib/registry
       - /opt/docker/containers/docker-registry/auth:/auth
       #- repo:/var/lib/registry
-volumes:
-  jenkins_data:
-    driver: local
-  repo:
-    driver: local
+#volumes:
+#  jenkins_data:
+#    driver: local
+#  repo:
+#    driver: local
