@@ -30,7 +30,7 @@ services:
       - /opt/docker/containers/docker-registry/certs:/certs
       - /opt/docker/containers/docker-registry/registry:/var/lib/registry
       - /opt/docker/containers/docker-registry/auth:/auth
-      - repo:/var/lib/registry
+      #- repo:/var/lib/registry
 volumes:
   jenkins_data:
     driver: local
