@@ -31,8 +31,8 @@ services:
       - /opt/docker/containers/docker-registry/registry:/var/lib/registry
       - /opt/docker/containers/docker-registry/auth:/auth
       #- repo:/var/lib/registry
-#volumes:
-#  jenkins_data:
-#    driver: local
-#  repo:
-#    driver: local
+volumes:
+  jenkins_data:
+    driver: local
+  repo:
+    driver: local
