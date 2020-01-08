@@ -3,7 +3,8 @@ services:
   petclinic:
     build:
       context: .
-    image: '192.168.2.112:5000/petclinic:latest'
+    image: '10.23.27.6:5000/petclinic:latest' 
+#    image: '192.168.2.112:5000/petclinic:latest'
     restart: always
     ports:
       - 5555:8080
