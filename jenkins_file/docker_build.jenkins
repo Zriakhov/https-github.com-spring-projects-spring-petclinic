@@ -12,7 +12,7 @@ properties([disableConcurrentBuilds()])
                 steps {
                     echo "-=- Cleaning project -=-"
                     //withMaven() {
-                        sh "./mvnw clean"
+                        sh "./mvn clean"
                     //}
                 }
             }
@@ -20,7 +20,7 @@ properties([disableConcurrentBuilds()])
                 steps {
                     echo "-=- compiling project -=-"
                     //withMaven() {
-                        sh "./mvnw compile"
+                        sh "./mvn compile"
                     //}
                 }
             }
@@ -28,14 +28,14 @@ properties([disableConcurrentBuilds()])
                 steps {
                     echo "-=- Testing -=-"
                     //withMaven() {
-                        sh "./mvnw test"
+                        sh "./mvn test"
                     //}
                 }
             }
             stage('Building project') {
                 steps {
                    echo "-=- Build project -=-"
-                   sh "./mvnw install -Dmaven.test.skip=true"
+                   sh "./mvn install -Dmaven.test.skip=true"
                 }
             }
             stage('Building docker image') {
