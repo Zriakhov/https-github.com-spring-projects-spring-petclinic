@@ -26,19 +26,6 @@ properties([disableConcurrentBuilds()])
                    sh "mvn install -Dmaven.test.skip=true"
                 }
             }
-            stage('Testing') {
-                steps {
-                    echo "-=- Testing -=-"
-                }
-                    try {
-                        sh "mvn test"
-                        testing = true
-                    }
-                    catch(err) {
-                        echo "Testing failed"
-                        testing = false
-                    }
-            }
             stage('Building docker image') {
                 steps {
                     echo "-=- Building docker image -=-"
@@ -52,7 +39,7 @@ properties([disableConcurrentBuilds()])
                             echo "EXPOSE 8080" >> ./Dockerfile
                             echo "CMD [\\\"java\\\",\\\"-jar\\\",\\\"/petclinic/spring-petclinic-2.2.0.${BUILD_NUMBER}.jar\\\"]" >> ./Dockerfile
                             '''
-                        dockerImage=docker.build("localhost:443/petclinic:${BUILD_NUMBER}")
+                            dockerImage=docker.build("localhost:443/petclinic:${BUILD_NUMBER}")
                         }
                     }
                 }
@@ -63,14 +50,26 @@ properties([disableConcurrentBuilds()])
                     script {
                         docker.withRegistry( "https://localhost:443" ){
                             dockerImage.push()
-                            if (testing == true){
-                                dockerImage.push 'latest'
-                            }
+                            dockerImage.push 'latest'
+                        }
+                    }
+                }
+            }
+            stage('Testing') {
+                steps {
+                    echo "-=- Testing -=-"
+                    sh "mvn test"
+                    script {
+                        docker.withRegistry( "https://localhost:443" ){
+                            dockerImage.push 'stable'
                         }
                     }
                 }
             }
             stage('Deploy Image') {
+                steps {
+                    
+                }
                 agent { label 'slave1' }
                 options { skipDefaultCheckout() }
                 steps {
