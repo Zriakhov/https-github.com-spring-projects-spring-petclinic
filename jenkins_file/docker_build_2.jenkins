@@ -29,6 +29,7 @@ properties([disableConcurrentBuilds()])
             stage('Testing') {
                 steps {
                     echo "-=- Testing -=-"
+                }
                     try {
                         sh "mvn test"
                         testing = true
@@ -37,7 +38,6 @@ properties([disableConcurrentBuilds()])
                         echo "Testing failed"
                         testing = false
                     }
-                }
             }
             stage('Building docker image') {
                 steps {
