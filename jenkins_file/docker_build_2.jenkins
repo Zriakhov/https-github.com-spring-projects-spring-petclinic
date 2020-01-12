@@ -50,7 +50,7 @@ properties([disableConcurrentBuilds()])
                     script {
                         docker.withRegistry( "https://localhost:443" ){
                             dockerImage.push()
-                            dockerImage.push 'latest'
+                            //dockerImage.push 'latest'
                         }
                     }
                 }
