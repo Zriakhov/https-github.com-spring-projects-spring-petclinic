@@ -7,7 +7,7 @@ if [ -n "${a}" ]; then
   docker-compose -f docker-compose_petclinic.yml stop
   docker-compose -f docker-compose_petclinic.yml rm -f
  else
-  echo "Conteiner do'nt run"
+  echo "Conteiner don't run"
 fi
 #docker rmi 192.168.2.112:5000/petclinic -f
 #docker rmi 10.23.27.6:5000/petclinic -f
