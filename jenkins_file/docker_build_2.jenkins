@@ -71,23 +71,25 @@ properties([disableConcurrentBuilds()])
             }
             
             stage('Deploy Image') {
-                script {
-                    scp '${workspace}/jenkins_file/VM2_start.sh vagrant@10.23.27.8:/home/vagrant/petclinic/VM2_start.sh'
-                    scp '${workspace}/jenkins_file/docker-compose_petclinic.yml vagrant@10.23.27.8:/home/vagrant/petclinic/docker-compose_petclinic.yml'
-                }
-                agent { label 'slave1' }
-                options { skipDefaultCheckout() }
+                
                 steps {
+                    script {
+                        scp '${workspace}/jenkins_file/VM2_start.sh vagrant@10.23.27.8:/home/vagrant/petclinic/VM2_start.sh'
+                        scp '${workspace}/jenkins_file/docker-compose_petclinic.yml vagrant@10.23.27.8:/home/vagrant/petclinic/docker-compose_petclinic.yml'
+                    }
+                    agent { label 'slave1' }
+                    options { skipDefaultCheckout() }
                     echo "-=- Deploy Image -=-"
                     dir ("${HOME}/petclinic") {
                         sh './VM2_start.sh'
                     }
                     mail bcc: '', body: "The deployment of \"Pet Clinic\" project completed successfully with build spring-petclinic-2.2.0.${BUILD_NUMBER}, http://10.23.27.8:5555/", cc: '', from: '', replyTo: '', subject: 'Jenkins: from "pet-job"', to: 'Mykhailo_Zriakhov@epam.com'
+                    script {
+                        ssh 'vagrant@10.23.27.8 \"rm /home/vagrant/petclinic/VM2_start.sh\"'
+                        ssh 'vagrant@10.23.27.8 \"rm /home/vagrant/petclinic/docker-compose_petclinic.yml\"' 
+                    }
                 }
-                script {
-                    ssh 'vagrant@10.23.27.8 \"rm /home/vagrant/petclinic/VM2_start.sh\"'
-                    ssh 'vagrant@10.23.27.8 \"rm /home/vagrant/petclinic/docker-compose_petclinic.yml\"' 
-                }
+                
             }
         }
     }
