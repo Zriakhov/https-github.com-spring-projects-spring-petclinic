@@ -71,9 +71,9 @@ properties([disableConcurrentBuilds()])
             }
             
             stage('Deploy Image') {
-                
+                options { skipDefaultCheckout() }
                 steps {
-                    options { skipDefaultCheckout() }
+                    
                     script {
                         scp '${workspace}/jenkins_file/VM2_start.sh vagrant@10.23.27.8:/home/vagrant/petclinic/VM2_start.sh'
                         scp '${workspace}/jenkins_file/docker-compose_petclinic.yml vagrant@10.23.27.8:/home/vagrant/petclinic/docker-compose_petclinic.yml'
