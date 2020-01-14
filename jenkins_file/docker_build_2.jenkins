@@ -11,7 +11,7 @@ properties([disableConcurrentBuilds()])
             stage('Preparation') {
                 steps {
                     echo "-=- Cleaning project -=-"
-                    withMaven (maven) {
+                    //withMaven (maven) {
                         sh "mvn clean"
                     }
                 }
