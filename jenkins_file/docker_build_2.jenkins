@@ -11,7 +11,9 @@ properties([disableConcurrentBuilds()])
             stage('Preparation') {
                 steps {
                     echo "-=- Cleaning project -=-"
+                    withMaven (maven) {
                         sh "mvn clean"
+                    }
                 }
             }
             stage('Compile') {
@@ -50,7 +52,6 @@ properties([disableConcurrentBuilds()])
                     script {
                         docker.withRegistry( "https://localhost:443" ){
                             dockerImage.push()
-                            //dockerImage.push 'latest'
                         }
                     }
                 }
@@ -59,7 +60,7 @@ properties([disableConcurrentBuilds()])
                 steps {
                     echo "-=- Testing -=-"
                     catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                        sh "nmvn test"
+                        sh "mvn test"
                         script {
                             docker.withRegistry( "https://localhost:443" ){
                                 dockerImage.push 'stable'
@@ -69,6 +70,9 @@ properties([disableConcurrentBuilds()])
                 }
             }
             stage('Deploy Image') {
+                script {
+                    scp 
+                        }
                 agent { label 'slave1' }
                 options { skipDefaultCheckout() }
                 steps {
