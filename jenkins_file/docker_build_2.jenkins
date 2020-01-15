@@ -71,8 +71,8 @@ properties([disableConcurrentBuilds()])
             }
             stage('Deploy Image') {
                 steps {
-                    options { skipDefaultCheckout() }
                     agent { label 'slave1' }
+                    options { skipDefaultCheckout() }
                     echo "-=- Deploy Image -=-"
                     dir ("${HOME}/petclinic") {
                         sh 'wget https://raw.githubusercontent.com/Zriakhov/petclinic/master/jenkins_file/VM2_start.sh'
