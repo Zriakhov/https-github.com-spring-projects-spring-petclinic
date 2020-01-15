@@ -78,13 +78,12 @@ properties([disableConcurrentBuilds()])
                     dir ("${HOME}/petclinic") {
                         sh 'wget https://raw.githubusercontent.com/Zriakhov/petclinic/master/jenkins_file/VM2_start.sh'
                         sh 'wget https://raw.githubusercontent.com/Zriakhov/petclinic/master/jenkins_file/docker-compose_petclinic.yml'
-                        sh './VM2_start.sh'
+                        sh 'bash VM2_start.sh'
                         sh 'rm docker-compose_petclinic.yml'
                         sh 'rm VM2_start.sh'
                     }
                     mail bcc: '', body: "The deployment of \"Pet Clinic\" project completed successfully with build spring-petclinic-2.2.0.${BUILD_NUMBER}, http://10.23.27.8:5555/", cc: '', from: '', replyTo: '', subject: 'Jenkins: from "pet-job"', to: 'Mykhailo_Zriakhov@epam.com'
                 }
-                
             }
         }
     }
