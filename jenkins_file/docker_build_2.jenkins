@@ -70,10 +70,11 @@ properties([disableConcurrentBuilds()])
                 }
             }
             stage('Deploy Image') {
+                
+                agent { label 'slave1' }
+                options { skipDefaultCheckout() }
                 steps {
-                    agent { label 'slave1' }
-                    options { skipDefaultCheckout() }
-                    echo "-=- Deploy Image -=-"
+                    echo "-=- Deploy Image -=-"    
                     dir ("${HOME}/petclinic") {
                         sh 'wget https://raw.githubusercontent.com/Zriakhov/petclinic/master/jenkins_file/VM2_start.sh'
                         sh 'wget https://raw.githubusercontent.com/Zriakhov/petclinic/master/jenkins_file/docker-compose_petclinic.yml'
